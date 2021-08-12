@@ -10,4 +10,17 @@ class Home(TemplateView):
     
 class About(TemplateView):
     template_name = 'about.html'
+class Dogs:
     
+    def __init__(self, breed, image, bio):
+        self.breed = breed
+        self.image = image
+        self.bio = bio
+
+class DogList(TemplateView):
+        template_name = "dog_list.html"
+
+        def get_context_data(self, **kwargs):
+                context = super().get_context_data(**kwargs)
+                context["dogs"] = [] # this is where we add the key into our context object for the view to use
+                return context
